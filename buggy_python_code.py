@@ -3,7 +3,6 @@ import flask
 
 app = flask.Flask(__name__)
 
-
 @app.route("/")
 def index():
     version = flask.request.args.get("urllib_version")
@@ -25,8 +24,8 @@ def fetch_website(urllib_version, url):
     # Import the requested version (2 or 3) of urllib
     exec(f"import urllib{urllib_version} as urllib", globals())
     # Fetch and print the requested URL
- 
-    try: 
+
+    try:
         http = urllib.PoolManager()
         _ = http.request('GET', url)
     except(e):
